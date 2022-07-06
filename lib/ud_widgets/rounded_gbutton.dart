@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class RoundedGreenButton extends StatelessWidget {
   final String text;
+  final String routeKey;
   
-  RoundedGreenButton({required this.text});
+  RoundedGreenButton({required this.text, required this.routeKey});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,9 @@ class RoundedGreenButton extends StatelessWidget {
           backgroundColor: Colors.green[400],
           primary: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, routeKey);
+        },
         
         child: Text(
           text,

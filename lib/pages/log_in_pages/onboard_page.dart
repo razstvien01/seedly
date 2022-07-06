@@ -46,7 +46,7 @@ class Onboard_Page extends StatelessWidget {
           
           SizedBox(height: 20,),
           
-          RoundedGreenButton(text: "Log in"),
+          RoundedGreenButton(text: "Log in", routeKey: '/login'),
           
           Row(
             // crossAxisAlignment: CrossAxisAlignment.,
@@ -67,7 +67,7 @@ class Onboard_Page extends StatelessWidget {
             ],
           ),
           
-          RoundedGreenButton(text: "Sign up"),
+          RoundedGreenButton(text: "Sign up", routeKey: '/signup'),
         ],
       ),
     );
