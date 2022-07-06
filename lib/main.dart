@@ -7,10 +7,12 @@ import 'package:seedly/pages/log_in_pages/signup_page.dart';
 void main() => runApp(MaterialApp(
   // home: Log_In(),
   
+  initialRoute: '/onboard',
+  
   routes: {
     '/': (context) => LoadingPage(),
-    // '/onboard': (context) => Onboard_Page(),
+    '/onboard': (context) => Onboard_Page(),
     '/login': (context) => Login_Page(),
-    // '/signup': (context) => Signup_Page(),
+    '/signup': (context) => Signup_Page(),
   },
 ));
