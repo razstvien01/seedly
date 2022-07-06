@@ -9,8 +9,8 @@ void main() => runApp(MaterialApp(
   
   routes: {
     '/': (context) => LoadingPage(),
-    '/onboard': (context) => Onboard_Page(),
-    '/login': (context) => Login_Page(),
-    '/signup': (context) => Signup_Page(),
+    // '/onboard': (context) => Onboard_Page(),
+    // '/login': (context) => Login_Page(),
+    // '/signup': (context) => Signup_Page(),
   },
 ));
