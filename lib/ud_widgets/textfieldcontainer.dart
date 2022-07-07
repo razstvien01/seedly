@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {
-  final Widget child;
+  final String hintText;
   const TextFieldContainer({
     Key? key,
-    required this.child,
+    required this.hintText
   }) : super(key: key);
 
   @override
@@ -18,7 +18,13 @@ class TextFieldContainer extends StatelessWidget {
         color: Colors.grey[350],
         borderRadius: BorderRadius.circular(20),
       ),
-      child: child,
+      
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey[600]),
+        ),
+      ),
     );
   }
 }
