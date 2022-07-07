@@ -23,7 +23,13 @@ void main() => runApp(MaterialApp(
     scaffoldBackgroundColor: Colors.grey[200],
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.green[400],
-    )
+    ),
+    
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+    ),
   ),
   
 ));

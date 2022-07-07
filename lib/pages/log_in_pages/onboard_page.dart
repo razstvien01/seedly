@@ -30,7 +30,7 @@ class Onboard_Page extends StatelessWidget {
           SizedBox(height: 20,),
           
           Image.asset(
-            'assets/images/draftPic.jpg', 
+            'assets/images/icon.png', 
             height: 200, 
             width:  200,
           ),
@@ -47,7 +47,7 @@ class Onboard_Page extends StatelessWidget {
           
           SizedBox(height: 20,),
           
-          RoundedGreenButton(text: "Log in", routeKey: '/login'),
+          RoundedGreenButton(text: "Log in", routeKey: '/login', onColor: true,),
           
           Row(
             // crossAxisAlignment: CrossAxisAlignment.,
@@ -62,13 +62,12 @@ class Onboard_Page extends StatelessWidget {
               
               Expanded(
                 child: Divider(
-                  color: Colors.grey[600],
-                ),
+                  color: Colors.grey[600],                ),
               ),
             ],
           ),
           
-          RoundedGreenButton(text: "Sign up", routeKey: '/signup'),
+          RoundedGreenButton(text: 'Sign up', routeKey: '/signup', onColor: true,),
         ],
       ),
     );
