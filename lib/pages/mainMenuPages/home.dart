@@ -11,7 +11,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Home/Menu page'),
       appBar: AppBar(
         actions: [
           IconButton(
@@ -23,6 +22,22 @@ class _HomeState extends State<Home> {
             },
             icon: Icon(Icons.search),
           )
+        ],
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text(
+              'Most Popular',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                
+              ),
+            ),
+          ),
+          
         ],
       ),
     );
