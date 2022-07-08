@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
-
+import 'package:seedly/ud_widgets/hdivider_text.dart';
 class Onboard_Page extends StatelessWidget {
   const Onboard_Page({Key? key}) : super(key: key);
 
@@ -45,29 +45,17 @@ class Onboard_Page extends StatelessWidget {
             )
           ),
           
-          SizedBox(height: 20,),
+          SizedBox(height: 50,),
           
-          RoundedGreenButton(text: "Log in", routeKey: '/login', onColor: true,),
+          RoundedGreenButton(text: "Log in", routeKey: '/onboard/login', onColor: true,),
           
-          Row(
-            // crossAxisAlignment: CrossAxisAlignment.,
-            children: [
-              Expanded(
-                child: Divider(
-                  color: Colors.grey[600],
-                ),
-              ),
-              
-              Text('or'),
-              
-              Expanded(
-                child: Divider(
-                  color: Colors.grey[600],                ),
-              ),
-            ],
-          ),
+          HDividerText(),
           
-          RoundedGreenButton(text: 'Sign up', routeKey: '/signup', onColor: true,),
+          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true,),
+          
+          SizedBox(height: 50,),
+          
+          Text('prototype version'),
         ],
       ),
     );

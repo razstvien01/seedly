@@ -11,7 +11,11 @@ class Login_Page extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Log In to your Account'),
+        title: Text(
+          'Log In to your Account',
+          style: TextStyle(color: Colors.black),
+        ),
+        
       ),
       
       body: Center(
@@ -34,7 +38,7 @@ class Login_Page extends StatelessWidget {
             SizedBox(height: 20,),
             
             RoundedGreenButton(
-              routeKey: '',
+              routeKey: '/onboard/login/home',
               text: 'Log in',
               onColor: true,
             ),
