@@ -15,17 +15,17 @@ void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
   
   routes: {
-    '/': (context) => LoadingPage(),
-    '/onboard': (context) => Onboard_Page(),
-    '/onboard/login': (context) => Login_Page(),
-    '/onboard/signup': (context) => Signup_Page(),
-    '/onboard/login/home': (context) => Home(),
+    '/': (context) => const LoadingPage(),
+    '/onboard': (context) => const Onboard_Page(),
+    '/onboard/login': (context) => const LoginPage(),
+    '/onboard/signup': (context) => const Signup_Page(),
+    '/onboard/login/home': (context) => const Home(),
   },
   
   theme: ThemeData(
     primaryColor: Colors.green[400],
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,

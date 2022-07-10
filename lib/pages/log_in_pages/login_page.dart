@@ -3,8 +3,8 @@ import 'package:seedly/ud_widgets/textfieldcontainer.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 import 'package:seedly/ud_widgets/cbox.dart';
 
-class Login_Page extends StatelessWidget {
-  const Login_Page({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
