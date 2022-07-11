@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       
-      bottomNavigationBar: NavBar()
+      // bottomNavigationBar: NavBar()
     );
   }
 }
