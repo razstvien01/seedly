@@ -16,7 +16,7 @@ class _CBoxState extends State<CBox> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-        child: Container(width: 200,
+        child: SizedBox(width: 200,
           child: ListTile(
             leading: Checkbox(
               activeColor: Colors.green[400],

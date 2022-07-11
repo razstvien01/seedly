@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 import 'package:seedly/ud_widgets/hdivider_text.dart';
-class Onboard_Page extends StatelessWidget {
-  const Onboard_Page({Key? key}) : super(key: key);
+class OnboardPage extends StatelessWidget {
+  const OnboardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +11,11 @@ class Onboard_Page extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           Row(
-            children: [
+            children: const [
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                 child: Text(
                   'Welcome to',
                   style: TextStyle(
@@ -27,7 +27,7 @@ class Onboard_Page extends StatelessWidget {
           ),
           
           
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           
           Image.asset(
             'assets/images/icon.png', 
@@ -45,17 +45,17 @@ class Onboard_Page extends StatelessWidget {
             )
           ),
           
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
           
-          RoundedGreenButton(text: "Log in", routeKey: '/onboard/login', onColor: true,),
+          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true,),
           
-          HDividerText(),
+          const HDividerText(),
           
           RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true,),
           
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
           
-          Text('prototype version'),
+          const Text('prototype version'),
         ],
       ),
     );

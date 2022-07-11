@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+//* Sign up and sign in pages
 import 'package:seedly/pages/loading_page.dart';
 import 'package:seedly/pages/log_in_pages/onboard_page.dart';
 import 'package:seedly/pages/log_in_pages/login_page.dart';
 import 'package:seedly/pages/log_in_pages/signup_page.dart';
 
+//* Home page
 import 'package:seedly/pages/mainMenuPages/home.dart';
 
 void main() => runApp(MaterialApp(
@@ -16,9 +18,9 @@ void main() => runApp(MaterialApp(
   
   routes: {
     '/': (context) => const LoadingPage(),
-    '/onboard': (context) => const Onboard_Page(),
+    '/onboard': (context) => const OnboardPage(),
     '/onboard/login': (context) => const LoginPage(),
-    '/onboard/signup': (context) => const Signup_Page(),
+    '/onboard/signup': (context) => const SignupPage(),
     '/onboard/login/home': (context) => const Home(),
   },
   

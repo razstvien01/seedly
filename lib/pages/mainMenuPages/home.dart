@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seedly/ud_widgets/searchWidget.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,26 +9,60 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: CustomSearchDelegate(),
-              );
-            },
-            icon: Icon(Icons.search),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+        // actions: [
+          
+        // ],
+      // ),
       body: Column(
         children: [
+          
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding:  const EdgeInsets.symmetric(horizontal: 25),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search for a plant..',
+                        ),
+                      ),
+                    ),
+                  ),
+                  
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
+                      height: 50,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.search),
+                        color: Colors.green,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          
+          
+          
+          const Padding(
+            padding: EdgeInsets.all(25.0),
             child: Text(
               'Most Popular',
               style: TextStyle(
@@ -87,8 +122,9 @@ class CustomSearchDelegate extends SearchDelegate{
     List<String> matchQuery = [];
     
     for(var plant in searchTerms) {
-      if(plant.toLowerCase().contains(query.toLowerCase()))
+      if(plant.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(plant);
+      }
     }
     
     //* returns a list of item results
@@ -108,8 +144,9 @@ class CustomSearchDelegate extends SearchDelegate{
     List<String> matchQuery = [];
     
     for(var plant in searchTerms) {
-      if(plant.toLowerCase().contains(query.toLowerCase()))
+      if(plant.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(plant);
+      }
     }
     
     //* returns a list of item results

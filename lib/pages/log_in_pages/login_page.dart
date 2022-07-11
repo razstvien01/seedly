@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Log In to your Account',
           style: TextStyle(color: Colors.black),
         ),
@@ -23,19 +23,19 @@ class LoginPage extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.center,
           
           children: [
-            SizedBox(height: 200,),
+            const SizedBox(height: 200,),
             
-            TextFieldContainer(hintText: 'Username'),
+            const TextFieldContainer(hintText: 'Username'),
             
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             
-            TextFieldContainer(hintText: 'Password',),
+            const TextFieldContainer(hintText: 'Password',),
             
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             
-            CBox(),
+            const CBox(),
             
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             
             RoundedGreenButton(
               routeKey: '/onboard/login/home',
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
               onColor: true,
             ),
             
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             
             RoundedGreenButton(
               routeKey: '',
