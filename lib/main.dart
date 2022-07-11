@@ -12,10 +12,9 @@ import 'package:seedly/ud_widgets/nav_bar.dart';
 import 'package:seedly/pages/mainMenuPages/home.dart';
 
 void main() => runApp(MaterialApp(
-  // home: Log_In(),
-  
   //* Initial nga page nga e run
-  initialRoute: '/navbar',
+  // initialRoute: '/navbar',
+  initialRoute: '/onboard',
   debugShowCheckedModeBanner: false,
   
   routes: {

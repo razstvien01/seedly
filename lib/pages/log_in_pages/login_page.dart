@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20,),
             
             RoundedGreenButton(
-              routeKey: '/onboard/login/home',
+              routeKey: '/navbar',
               text: 'Log in',
               onColor: true,
             ),
