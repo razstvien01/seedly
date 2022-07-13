@@ -1,3 +1,5 @@
+//* This .dart file is used for designing customize Rounded green button widget
+
 import 'package:flutter/material.dart';
 
 class RoundedGreenButton extends StatelessWidget {
@@ -5,6 +7,7 @@ class RoundedGreenButton extends StatelessWidget {
   final String routeKey;
   final bool onColor;
   
+  //* A constructor that accepts 3 data when it's being defined
   RoundedGreenButton({required this.text, required this.routeKey, required this.onColor});
 
   @override

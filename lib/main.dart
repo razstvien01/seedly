@@ -6,27 +6,26 @@ import 'package:seedly/pages/log_in_pages/onboard_page.dart';
 import 'package:seedly/pages/log_in_pages/login_page.dart';
 import 'package:seedly/pages/log_in_pages/signup_page.dart';
 
+//* Navigation bar widget
 import 'package:seedly/ud_widgets/nav_bar.dart';
-
-//* Home page
-import 'package:seedly/pages/mainMenuPages/home.dart';
 
 void main() => runApp(MaterialApp(
   //* Initial nga page nga e run
-  // initialRoute: '/navbar',
+
   initialRoute: '/onboard',
   debugShowCheckedModeBanner: false,
   
+  //* mga page routes
   routes: {
-    '/': (context) => const LoadingPage(),
-    '/onboard': (context) => const OnboardPage(),
-    '/onboard/login': (context) => const LoginPage(),
-    '/onboard/signup': (context) => const SignupPage(),
+    '/': (context) => const LoadingPage(),  //* Loading screen
+    '/onboard': (context) => const OnboardPage(), //* Onboard page
+    '/onboard/login': (context) => const LoginPage(), //* Log in page
+    '/onboard/signup': (context) => const SignupPage(), //* Sign up page
     
-    '/navbar': (context) => NavBar(),
-    '/navbar/home': (context) => const Home(),
+    '/navbar': (context) => NavBar(), //* Navigation bar widget that connects 4 different pages
   },
   
+  //* Theme data
   theme: ThemeData(
     primaryColor: Colors.green[400],
     scaffoldBackgroundColor: Colors.white,

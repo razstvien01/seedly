@@ -1,4 +1,8 @@
+//* This .dart file is used for designing Sign up page UI
+
 import 'package:flutter/material.dart';
+
+//* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 

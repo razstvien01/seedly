@@ -1,4 +1,8 @@
+//* This .dart file is used for designing Log in page UI
+
 import 'package:flutter/material.dart';
+
+//* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 import 'package:seedly/ud_widgets/cbox.dart';
@@ -20,8 +24,6 @@ class LoginPage extends StatelessWidget {
       
       body: Center(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          
           children: [
             const SizedBox(height: 200,),
             

@@ -1,4 +1,8 @@
+//* This .dart file is used for designing customize Navigation bar widget for connecting 4 major pages
+
 import 'package:flutter/material.dart';
+
+//* User defined widgets
 import 'package:seedly/pages/mainMenuPages/home.dart';
 import 'package:seedly/pages/mainMenuPages/cart_page.dart';
 import 'package:seedly/pages/mainMenuPages/chat_page.dart';
@@ -12,6 +16,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int index = 0;
   
+  //* List of pages or screens
   final screens = [
     Home(),
     CartPage(),
@@ -33,14 +38,16 @@ class _NavBarState extends State<NavBar> {
           ),
         ),
         child: NavigationBar(
-          selectedIndex: index,
+          selectedIndex: index, //* This index is use for navigating pages based on what index that has been choosen after click
           height: 60,
           backgroundColor: Colors.grey[100],
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           animationDuration: Duration(seconds: 2),
           onDestinationSelected: (index) => setState(() {
-            this.index = index;
+            this.index = index; //* New page is selected
           }),
+          
+          //* Destinations of pages and their UIs
           destinations: [
             NavigationDestination(
               icon: Icon(Icons.home_outlined), label: 'Home',

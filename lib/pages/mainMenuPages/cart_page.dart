@@ -1,3 +1,5 @@
+//* This .dart file is used for designing Cart page UI in main menu folder
+
 import 'package:flutter/material.dart';
 
 class CartPage extends StatelessWidget {

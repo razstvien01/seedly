@@ -1,3 +1,5 @@
+//* This .dart file is used for designing customize Search bar widget
+
 import 'package:flutter/material.dart';
 
 class TextFieldSearchBar extends StatelessWidget {

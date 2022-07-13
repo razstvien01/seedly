@@ -1,3 +1,5 @@
+//* This .dart file is used for designing Chat page UI in main menu folder
+
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {

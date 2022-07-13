@@ -1,3 +1,5 @@
+//* This .dart file is used for designing customize Horizontal devider widget
+
 import 'package:flutter/material.dart';
 
 class HDividerText extends StatelessWidget {

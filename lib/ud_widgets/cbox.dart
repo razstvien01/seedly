@@ -1,3 +1,5 @@
+//* This .dart file is used for designing customize Checkbox widget
+
 import 'package:flutter/material.dart';
 
 class CBox extends StatefulWidget {

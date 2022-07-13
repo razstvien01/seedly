@@ -1,3 +1,5 @@
+//* This .dart file is used for designing Profile page UI in main menu folder
+
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {

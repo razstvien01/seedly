@@ -1,6 +1,9 @@
+//* This .dart file is used for designing Home page UI in main menu folder
+
 import 'package:flutter/material.dart';
+
+//* User defined widgets
 import 'package:seedly/ud_widgets/tfsearchbar.dart';
-import 'package:seedly/ud_widgets/nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,7 +21,7 @@ class _HomeState extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           
-          TextFieldSearchBar(),
+          TextFieldSearchBar(), //* Search bar
           
           const Padding(
             padding: EdgeInsets.all(25.0),
@@ -39,6 +42,8 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+//* This class is use for searching library for search bar soon
 class CustomSearchDelegate extends SearchDelegate{
   List<String> searchTerms = [
     'Apple',

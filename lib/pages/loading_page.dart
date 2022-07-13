@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//* This .dart file is used for designing Loading screen page UI in main menu folder
+
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
