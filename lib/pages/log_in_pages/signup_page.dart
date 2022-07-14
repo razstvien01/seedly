@@ -28,7 +28,7 @@ class SignupPage extends StatelessWidget {
                 const TextFieldContainer(hintText: 'Username'),
                 const TextFieldContainer(hintText: 'Password'),
                 const TextFieldContainer(hintText: 'Email'),
-                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue'),
+                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', replace: false,),
               ],
             ),
           )

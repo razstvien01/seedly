@@ -40,9 +40,10 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20,),
             
             RoundedGreenButton(
-              routeKey: '/navbar',
+              routeKey: '/',
               text: 'Log in',
               onColor: true,
+              replace: true,
             ),
             
             const SizedBox(height: 20,),
@@ -51,6 +52,7 @@ class LoginPage extends StatelessWidget {
               routeKey: '',
               text: 'Forgot account',
               onColor: false,
+              replace: false,
             ),
           ],
         ),

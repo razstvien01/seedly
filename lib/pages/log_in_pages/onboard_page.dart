@@ -52,12 +52,12 @@ class OnboardPage extends StatelessWidget {
           const SizedBox(height: 50,),
           
           //* Login/Sign button
-          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true,),
+          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, replace: false,),
           
           const HDividerText(),
           
           //* Sign up button
-          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true,),
+          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, replace: false,),
           
           const SizedBox(height: 50,),
           
