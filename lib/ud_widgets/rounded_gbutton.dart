@@ -13,20 +13,22 @@ class RoundedGreenButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //* COlors
     Color bgColor = Colors.green[400] as Color;
     Color primary = Colors.white as Color;
+    
     if(!onColor)
     {
       bgColor = Colors.grey[200] as Color;
       primary = Colors.grey[800] as Color;
     }
     return Container(
-      width: 300,
+      width: 350,
       height: 45,
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(15),
           ),
           backgroundColor: bgColor,
           primary: primary,

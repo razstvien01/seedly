@@ -26,8 +26,11 @@ class SignupPage extends StatelessWidget {
             child: Column(
               children: [
                 const TextFieldContainer(hintText: 'Username'),
+                SizedBox(height: 30,),
                 const TextFieldContainer(hintText: 'Password'),
+                SizedBox(height: 30,),
                 const TextFieldContainer(hintText: 'Email'),
+                SizedBox(height: 30,),
                 RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', replace: false,),
               ],
             ),
