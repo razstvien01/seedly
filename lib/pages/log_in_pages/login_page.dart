@@ -1,5 +1,6 @@
 //* This .dart file is used for designing Log in page UI
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 //* User defined widgets
@@ -7,9 +8,29 @@ import 'package:seedly/ud_widgets/textfieldcontainer.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 import 'package:seedly/ud_widgets/cbox.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
 
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    
+    super.dispose();
+  }
+  
+  //* Email and password authentification
+  Future signIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +48,11 @@ class LoginPage extends StatelessWidget {
           children: [
             const SizedBox(height: 200,),
             
-            const TextFieldContainer(hintText: 'Username'),
+            TextFieldContainer(hintText: 'Username', textEditingController: emailController, textInputAction: TextInputAction.next),
             
             const SizedBox(height: 20,),
             
-            const TextFieldContainer(hintText: 'Password',),
+            TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.done),
             
             const SizedBox(height: 20,),
             

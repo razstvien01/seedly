@@ -17,27 +17,17 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
-  // await Firebase.initializeApp(
-  // Replace with actual values
-  //   options: const FirebaseOptions(
-  //     apiKey: "api key here",
-  //     appId: "app id here",
-  //     messagingSenderId: "messaging id",
-  //     projectId: "project id here",
-  //   )
-  // );
-  
   runApp(MaterialApp(
     //* Initial nga page nga e run
     
     initialRoute: '/',
     debugShowCheckedModeBanner: false,
-    
+    // home: OnboardPage(),
     //* mga page routes
     routes: {
       '/': (context) => LoadingPage(),  //* Loading screen
       '/onboard': (context) => const OnboardPage(), //* Onboard page
-      '/onboard/login': (context) => const LoginPage(), //* Log in page
+      '/onboard/login': (context) => LoginPage(), //* Log in page
       '/onboard/signup': (context) => const SignupPage(), //* Sign up page
       
       '/navbar': (context) => NavBar(), //* Navigation bar widget that connects 4 different pages

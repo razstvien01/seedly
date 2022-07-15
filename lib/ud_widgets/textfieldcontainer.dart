@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {
   final String hintText;
+  final TextEditingController textEditingController;
+  final TextInputAction textInputAction;
+  
   const TextFieldContainer({
     Key? key,
-    required this.hintText
+    required this.hintText,
+    required this.textEditingController,
+    required this.textInputAction
   }) : super(key: key);
 
   @override
@@ -22,6 +27,8 @@ class TextFieldContainer extends StatelessWidget {
       ),
       
       child: TextField(
+        controller: textEditingController,
+        textInputAction: textInputAction,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.grey[600]),

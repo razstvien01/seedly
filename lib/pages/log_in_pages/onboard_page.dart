@@ -11,58 +11,60 @@ class OnboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 30,),
-          Row(
-            children: const [
-              Padding(
-                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                child: Text(
-                  'Welcome to',
-                  style: TextStyle(
-                    fontSize: 30,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 30,),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  child: Text(
+                    'Welcome to',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          
-          
-          const SizedBox(height: 20,),
-          
-          //* Seedly icon
-          Image.asset(
-            'assets/images/icon.png', 
-            height: 200, 
-            width:  200,
-          ),
-          
-          
-          Text(
-            'Seedly',
-            style: TextStyle(
-              fontSize: 50,
-              color: Colors.green[400],
-              fontWeight: FontWeight.bold,
-            )
-          ),
-          
-          const SizedBox(height: 50,),
-          
-          //* Login/Sign button
-          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, replace: false,),
-          
-          const HDividerText(),
-          
-          //* Sign up button
-          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, replace: false,),
-          
-          const SizedBox(height: 50,),
-          
-          const Text('prototype version'),
-        ],
+              ],
+            ),
+            
+            
+            const SizedBox(height: 20,),
+            
+            //* Seedly icon
+            Image.asset(
+              'assets/images/icon.png', 
+              height: 200, 
+              width:  200,
+            ),
+            
+            
+            Text(
+              'Seedly',
+              style: TextStyle(
+                fontSize: 50,
+                color: Colors.green[400],
+                fontWeight: FontWeight.bold,
+              )
+            ),
+            
+            const SizedBox(height: 50,),
+            
+            //* Login/Sign button
+            RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, replace: false,),
+            
+            const HDividerText(),
+            
+            //* Sign up button
+            RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, replace: false,),
+            
+            const SizedBox(height: 50,),
+            
+            const Text('prototype version'),
+          ],
+        ),
       ),
     );
   }
