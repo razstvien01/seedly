@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "880184122949",
+    "project_id": "seedly-88831",
+    "storage_bucket": "seedly-88831.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880184122949:android:66b7dcc4ad198ff01acd2c",
+        "android_client_info": {
+          "package_name": "com.example.seedly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880184122949-3c3plkgog69f7ihamq7j2vno7eubaiu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC546FAvED6yCOA_xpsHS6pZIUU-dQJbWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880184122949-3c3plkgog69f7ihamq7j2vno7eubaiu7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880184122949-lolg08uffjt372ot1o5o7rf40fh89poc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.seedly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
