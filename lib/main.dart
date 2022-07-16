@@ -31,7 +31,7 @@ void main() async {
       '/': (context) => LoadingPage(),  //* Loading screen
       '/onboard': (context) => const OnboardPage(), //* Onboard page
       '/onboard/login': (context) => LoginPage(), //* Log in page
-      '/onboard/signup': (context) => const SignupPage(), //* Sign up page
+      '/onboard/signup': (context) => SignupPage(), //* Sign up page
       
       '/navbar': (context) => NavBar(), //* Navigation bar widget that connects 4 different pages
     },

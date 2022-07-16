@@ -34,7 +34,7 @@ class RoundedGreenButton extends StatelessWidget {
           primary: primary,
         ),
         onPressed: () {
-          if(routeKey == '/navbar'){
+          if(routeKey == '/navbar' || routeKey == '/onboard'){
             onPressed();
           } else if(routeKey == '/signout'){
             Navigator.of(context)
