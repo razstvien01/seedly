@@ -11,6 +11,8 @@ import 'package:seedly/pages/log_in_pages/signup_page.dart';
 //* Navigation bar widget
 import 'package:seedly/ud_widgets/nav_bar.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -18,8 +20,9 @@ void main() async {
   );
   
   runApp(MaterialApp(
-    //* Initial nga page nga e run
+    navigatorKey: navigatorKey,
     
+    //* Initial nga page nga e run
     initialRoute: '/',
     debugShowCheckedModeBanner: false,
     // home: OnboardPage(),

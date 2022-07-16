@@ -2,6 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:seedly/main.dart';
+import 'package:seedly/pages/log_in_pages/onboard_page.dart';
+import 'package:seedly/ud_widgets/nav_bar.dart';
 
 //* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
@@ -28,65 +31,97 @@ class _LoginPageState extends State<LoginPage> {
   
   //* Email and password authentification
   Future signIn() async{
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(child: CircularProgressIndicator(),)
+    );
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(), );
       
       Navigator.of(context)
     .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-    } catch (e) {
-      
+    } on FirebaseAuthException catch (e) {
+      print(e);
     }
+    
+    //* Navigator.of(context) not working!
   }
   
   @override
   Widget build(BuildContext context) {
+    // return loginUI();
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Log In to your Account',
-          style: TextStyle(color: Colors.black),
-        ),
-        
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot){
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator(),);
+          }
+          else if(snapshot.hasError){
+            print('hmmmmm');
+            return Center(child: Text('Something went wrong!'));
+          }
+          else if(snapshot.hasData){
+            return NavBar();
+          }
+          else{
+            print('no data');
+            return loginUI();
+          }
+        },
+      )
+    );
+  }
+
+  Scaffold loginUI() {
+    return Scaffold(
+    appBar: AppBar(
+      centerTitle: true,
+      title: const Text(
+        'Log In to your Account',
+        style: TextStyle(color: Colors.black),
       ),
       
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(height: 200,),
-              
-              TextFieldContainer(hintText: 'Username', textEditingController: emailController, textInputAction: TextInputAction.next),
-              
-              const SizedBox(height: 20,),
-              
-              TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.done),
-              
-              const SizedBox(height: 20,),
-              
-              const CBox(),
-              
-              const SizedBox(height: 20,),
-              
-              RoundedGreenButton(
-                routeKey: '/navbar',
-                text: 'Log in',
-                onColor: true,
-                onPressed: signIn,
-              ),
-              
-              const SizedBox(height: 20,),
-              
-              RoundedGreenButton(
-                routeKey: '/asdsaddsds',
-                text: 'Forgot account',
-                onColor: false,
-                onPressed: () {},
-              ),
-            ],
-          ),
+    ),
+    
+    body: SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 200,),
+            
+            TextFieldContainer(hintText: 'Username', textEditingController: emailController, textInputAction: TextInputAction.next),
+            
+            const SizedBox(height: 20,),
+            
+            TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.done),
+            
+            const SizedBox(height: 20,),
+            
+            const CBox(),
+            
+            const SizedBox(height: 20,),
+            
+            RoundedGreenButton(
+              routeKey: '/navbar',
+              text: 'Log in',
+              onColor: true,
+              onPressed: signIn,
+            ),
+            
+            const SizedBox(height: 20,),
+            
+            RoundedGreenButton(
+              routeKey: '/asdsaddsds',
+              text: 'Forgot account',
+              onColor: false,
+              onPressed: () {},
+            ),
+          ],
         ),
       ),
-    );
+    ),
+  );
   }
 }
