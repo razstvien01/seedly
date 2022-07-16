@@ -61,10 +61,11 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20,),
             
             RoundedGreenButton(
-              routeKey: '/',
+              routeKey: '/navbar',
               text: 'Log in',
               onColor: true,
               replace: true,
+              onPressed: signIn,
             ),
             
             const SizedBox(height: 20,),
@@ -74,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               text: 'Forgot account',
               onColor: false,
               replace: false,
+              onPressed: () {},
             ),
           ],
         ),

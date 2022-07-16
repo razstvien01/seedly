@@ -7,9 +7,10 @@ class RoundedGreenButton extends StatelessWidget {
   final String routeKey;
   final bool onColor;
   final bool replace;
+  final VoidCallback onPressed;
   
   //* A constructor that accepts 3 data when it's being defined
-  RoundedGreenButton({required this.text, required this.routeKey, required this.onColor, required this.replace});
+  RoundedGreenButton({required this.text, required this.routeKey, required this.onColor, required this.replace, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,10 @@ class RoundedGreenButton extends StatelessWidget {
           primary: primary,
         ),
         onPressed: () {
-          if(replace){
-            print('replaced');
-            Navigator.pushReplacementNamed(context, routeKey);
+          if(routeKey == '/navbar'){
+            Navigator.of(context)
+    .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+            onPressed();
           }
           else {
             print('not replaced');

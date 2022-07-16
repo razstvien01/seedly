@@ -25,13 +25,13 @@ class SignupPage extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                TextFieldContainer(hintText: 'Username', textEditingController: TextEditingController(), textInputAction: TextInputAction.next),
+                TextFieldContainer(hintText: 'Username', textEditingController: TextEditingController(), textInputAction: TextInputAction.next,),
                 SizedBox(height: 30,),
                 TextFieldContainer(hintText: 'Password', textEditingController: TextEditingController(), textInputAction: TextInputAction.next),
                 SizedBox(height: 30,),
                 TextFieldContainer(hintText: 'Email', textEditingController: TextEditingController(), textInputAction: TextInputAction.next),
                 SizedBox(height: 30,),
-                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', replace: false,),
+                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', replace: false, onPressed: (){}),
               ],
             ),
           )
