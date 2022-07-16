@@ -35,9 +35,11 @@ class OnboardPage extends StatelessWidget {
     body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 30,),
+          const SizedBox(height: 60,),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
               Padding(
                 padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
@@ -74,12 +76,12 @@ class OnboardPage extends StatelessWidget {
           const SizedBox(height: 50,),
           
           //* Login/Sign button
-          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, replace: false, onPressed: (){}),
+          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, onPressed: (){}),
           
           const HDividerText(),
           
           //* Sign up button
-          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, replace: false, onPressed: (){},),
+          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, onPressed: (){},),
           
           const SizedBox(height: 50,),
           

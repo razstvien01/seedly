@@ -31,7 +31,7 @@ class SignupPage extends StatelessWidget {
                 SizedBox(height: 30,),
                 TextFieldContainer(hintText: 'Email', textEditingController: TextEditingController(), textInputAction: TextInputAction.next),
                 SizedBox(height: 30,),
-                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', replace: false, onPressed: (){}),
+                RoundedGreenButton(onColor: true, routeKey: '', text: 'Continue', onPressed: (){}),
               ],
             ),
           )

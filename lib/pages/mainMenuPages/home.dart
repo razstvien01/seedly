@@ -17,25 +17,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          
-          TextFieldSearchBar(), //* Search bar
-          
-          const Padding(
-            padding: EdgeInsets.all(25.0),
-            child: Text(
-              'Most Popular',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            
+            TextFieldSearchBar(), //* Search bar
+            
+            const Padding(
+              padding: EdgeInsets.all(25.0),
+              child: Text(
+                'Most Popular',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  
+                ),
               ),
             ),
-          ),
-          
-        ],
+            
+          ],
+        ),
       ),
       
       // bottomNavigationBar: NavBar()
