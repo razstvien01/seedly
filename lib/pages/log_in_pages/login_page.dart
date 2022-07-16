@@ -36,16 +36,21 @@ class _LoginPageState extends State<LoginPage> {
       barrierDismissible: false,
       builder: (context) => Center(child: CircularProgressIndicator(),)
     );
+    
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim(), );
       
       Navigator.of(context)
     .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+      return;
     } on FirebaseAuthException catch (e) {
       print(e);
     }
     
+    // navigatorKey.currentState!.dispose();
     //* Navigator.of(context) not working!
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    Navigator.pushNamed(context, '/onboard/login');
   }
   
   @override
