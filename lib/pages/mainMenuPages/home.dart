@@ -51,6 +51,28 @@ class _HomeState extends State<Home> {
                   SizedBox(height: 20,),
                   buildTopSection(),
                   
+                  SizedBox(height: 20,),
+                  
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Recommended',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text('Top', style: TextStyle(color: Colors.grey),),
+                        Text('Indoor', style: TextStyle(color: Colors.grey)),
+                        Text('Outdoor', style: TextStyle(color: Colors.grey)),
+                      ],
+                    ),
+                  ),
+                  
+                  SizedBox(height: 20,),
+                  
                 ],
               ),
             ),
