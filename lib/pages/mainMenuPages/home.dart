@@ -16,31 +16,115 @@ class _HomeState extends State<Home> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+    // return Scaffold(
+    //   body: SafeArea(
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
             
-            TextFieldSearchBar(), //* Search bar
+    //         TextFieldSearchBar(), //* Search bar
             
-            const Padding(
-              padding: EdgeInsets.all(25.0),
-              child: Text(
-                'Most Popular',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+    //         const Padding(
+    //           padding: EdgeInsets.all(25.0),
+    //           child: Text(
+    //             'Most Popular',
+    //             style: TextStyle(
+    //               color: Colors.black,
+    //               fontSize: 20,
                   
-                ),
+    //             ),
+    //           ),
+    //         ),
+            
+    //       ],
+    //     ),
+      // ),
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(30),
+              child: Column(
+                children: [
+                  SizedBox(height: 20,),
+                  buildTopSection(),
+                  
+                ],
               ),
             ),
-            
           ],
         ),
       ),
-      
-      // bottomNavigationBar: NavBar()
+    );
+  }
+
+  Widget buildTopSection() {
+    return Column(
+      children: [
+        Row(
+                      children: [
+                        Text(
+                          'Discover', 
+                        style: TextStyle(
+                            fontSize: 35,
+                          fontWeight: FontWeight.w800,
+                        ),),
+                        
+                        Spacer(),
+                        
+                        Stack(
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundImage: AssetImage(
+                                'assets/images/usericon.png', 
+                              ),
+                            ),
+                            
+                            Positioned(
+                              right: 0,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 19,
+                                width: 19,
+                                child: Text(
+                                  '2',
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                    
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+        SizedBox(height: 20,),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: 'Search',
+              prefixIcon: Icon(Icons.search),
+              suffixIcon: Icon(Icons.mic),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

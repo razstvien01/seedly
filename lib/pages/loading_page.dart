@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 //* This .dart file is used for designing Loading screen page UI in main menu folder
 
 class LoadingPage extends StatefulWidget {
-  LoadingPage({
+  const LoadingPage({
     Key? key,
   }) : super(key: key);
 

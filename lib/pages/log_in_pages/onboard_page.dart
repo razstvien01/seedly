@@ -13,28 +13,28 @@ class OnboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return onboardUI();
-    // return Scaffold(
-    //   body: StreamBuilder<User?>(
-    //     stream: FirebaseAuth.instance.authStateChanges(),
-    //     builder: (context, snapshot){
-    //       if(snapshot.connectionState == ConnectionState.waiting){
-    //         return Center(child: CircularProgressIndicator(),);
-    //       }
-    //       else if(snapshot.hasError){
-    //         print('hmmmmm');
-    //         return Center(child: Text('Something went wrong!'));
-    //       }
-    //       else if(snapshot.hasData){
-    //         return NavBar();
-    //       }
-    //       else{
-    //         print('no data');
-    //         return onboardUI();
-    //       }
-    //     },
-    //   )
-    // );
+    // return onboardUI();
+    return Scaffold(
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot){
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator(),);
+          }
+          else if(snapshot.hasError){
+            print('hmmmmm');
+            return Center(child: Text('Something went wrong!'));
+          }
+          else if(snapshot.hasData){
+            return NavBar();
+          }
+          else{
+            print('no data');
+            return onboardUI();
+          }
+        },
+      )
+    );
   }
 
   Scaffold onboardUI() {

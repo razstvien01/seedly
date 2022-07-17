@@ -58,22 +58,24 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
       
-      body: Column(
-        children: [
-          Center(
-            child: Column(
-              children: [
-                SizedBox(height: 30,),
-                TextFieldContainer(hintText: 'Email', textEditingController: emailController, textInputAction: TextInputAction.next),
-                SizedBox(height: 30,),
-                TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.next),
-                SizedBox(height: 30,),
-                
-                RoundedGreenButton(onColor: true, routeKey: '/onboard', text: 'Sign Up', onPressed: signUp),
-              ],
-            ),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 30,),
+                  TextFieldContainer(hintText: 'Email', textEditingController: emailController, textInputAction: TextInputAction.next),
+                  SizedBox(height: 30,),
+                  TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.next),
+                  SizedBox(height: 30,),
+                  
+                  RoundedGreenButton(onColor: true, routeKey: '/onboard', text: 'Sign Up', onPressed: signUp),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

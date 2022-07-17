@@ -1,9 +1,13 @@
 //* This .dart file is used for designing Log in page UI
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+//* Database auth
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:seedly/main.dart';
-import 'package:seedly/pages/log_in_pages/onboard_page.dart';
+
+//* a widget for navigation
 import 'package:seedly/ud_widgets/nav_bar.dart';
 
 //* User defined widgets
@@ -18,6 +22,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //* TextEditingController sa mga textfield/textbox
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   
@@ -47,36 +52,14 @@ class _LoginPageState extends State<LoginPage> {
       print(e);
     }
     
-    // navigatorKey.currentState!.dispose();
     //* Navigator.of(context) not working!
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
-    Navigator.pushNamed(context, '/onboard/login');
+    // navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    // Navigator.pushNamed(context, '/onboard/login');
   }
   
   @override
   Widget build(BuildContext context) {
-    // return loginUI();
-    return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator(),);
-          }
-          else if(snapshot.hasError){
-            print('hmmmmm');
-            return Center(child: Text('Something went wrong!'));
-          }
-          else if(snapshot.hasData){
-            return NavBar();
-          }
-          else{
-            print('no data');
-            return loginUI();
-          }
-        },
-      )
-    );
+    return loginUI();
   }
 
   Scaffold loginUI() {
