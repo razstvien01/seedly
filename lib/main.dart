@@ -1,6 +1,4 @@
 //* Firebase database
-import 'dart:js';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +29,7 @@ void main() async {
     navigatorKey: navigatorKey,
     
     //* Initial nga page nga e run
-    initialRoute: '/navbar',
+    initialRoute: '/',
     debugShowCheckedModeBanner: false,
     //* mga page routes
     routes: {

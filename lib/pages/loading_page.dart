@@ -14,21 +14,17 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  static bool start = true;
   //* a method for delaying a loading screen and it will push to another route
-  void doDelay(String routeKey) async{
+  void doDelay() async{
     await Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, routeKey);
+      Navigator.pushReplacementNamed(context, '/onboard');
     });
     
   }
   
   @override
   void initState(){
-    String routeKey = (start) ? '/onboard' : '/navbar';
-    
-    start = false;
-    doDelay(routeKey);
+    doDelay();
   }
   
   @override

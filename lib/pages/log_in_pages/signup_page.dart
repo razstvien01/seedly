@@ -2,7 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:seedly/main.dart';
 
 //* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';

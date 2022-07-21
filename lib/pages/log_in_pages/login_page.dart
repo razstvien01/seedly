@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 //* Database auth
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:seedly/main.dart';
-
-//* a widget for navigation
-import 'package:seedly/ud_widgets/nav_bar.dart';
-
 //* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
