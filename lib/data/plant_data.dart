@@ -48,6 +48,7 @@ List<Plants> populerPlants = [
     id: 0,
     name: 'Succuient',
     imagePath: 'assets/images/01.png',
+    // imagePath: 'assets/images/icon.png',
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',

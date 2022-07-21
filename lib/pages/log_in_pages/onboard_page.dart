@@ -64,7 +64,7 @@ class OnboardPage extends StatelessWidget {
           
           //* Seedly icon
           Image.asset(
-            'assets/images/icon.png', 
+            'assets/icons/icon.png', 
             height: 200, 
             width:  200,
           ),

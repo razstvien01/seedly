@@ -41,17 +41,17 @@ class _HomeState extends State<Home> {
                   SizedBox(height: 10,),
                   buildTopSection(),
                   
-              SizedBox(
-              height: 35.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  for (int i = 0; i < categories.length; i++)
-                    GestureDetector(
-                      onTap: () {
-                        setState(() => selectId = categories[i].id);
-                      },
-                      child: Column(
+                  SizedBox(
+                    height: 35.0,
+                    child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                        for (int i = 0; i < categories.length; i++)
+                          GestureDetector(
+                            onTap: () {
+                            setState(() => selectId = categories[i].id);
+                            },
+                        child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
@@ -104,6 +104,7 @@ class _HomeState extends State<Home> {
                       fontSize: 18.0,
                     ),
                   ),
+                  
                   Image.asset(
                     'assets/icons/more.png',
                     color: green,
@@ -144,6 +145,7 @@ class _HomeState extends State<Home> {
                           Row(
                             children: [
                               Image.asset(
+                                // 'assets/icons/more.png',
                                 populerPlants[index].imagePath,
                                 width: 70,
                                 height: 70,
@@ -202,22 +204,22 @@ class _HomeState extends State<Home> {
     return Column(
       children: [
         Row(
-                      children: [
-                        Text(
-                          'Discover', 
-                        style: TextStyle(
-                            fontSize: 35,
-                          fontWeight: FontWeight.w800,
-                        ),),
-                        
-                        Spacer(),
-                        
-                        Stack(
-                          children: [
-                            CircleAvatar(
+          children: [
+            Text(
+              'Discover', 
+              style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.w800,
+              ),),
+              
+              Spacer(),
+              
+              Stack(
+                children: [
+                  CircleAvatar(
                               radius: 30,
                               backgroundImage: AssetImage(
-                                'assets/images/usericon.png', 
+                                'assets/icons/usericon.png', 
                               ),
                             ),
                             
