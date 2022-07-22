@@ -42,7 +42,7 @@ class _CartPageState extends State<CartPage> {
       )
           : Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
-        height: size.height,
+        height: size.height * .85,
         child: Column(
           children: [
             Expanded(
@@ -75,6 +75,8 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
               ],
+              
+              
             ),
           ],
         ),

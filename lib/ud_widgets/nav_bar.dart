@@ -1,17 +1,15 @@
 //* This .dart file is used for designing customize Navigation bar widget for connecting 4 major pages
 
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 //* User defined widgets
 import 'package:seedly/pages/mainMenuPages/home.dart';
 import 'package:seedly/pages/mainMenuPages/cart_page.dart';
-import 'package:seedly/pages/mainMenuPages/chat_page.dart';
 import 'package:seedly/pages/mainMenuPages/profile_page.dart';
+import 'package:seedly/pages/mainMenuPages/favorite_page.dart';
 
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class NavBar extends StatefulWidget {
@@ -30,7 +28,7 @@ class _NavBarState extends State<NavBar> {
     return [
       const Home(),
       CartPage(addedToCartPlants: myCart,),
-      ChatPage(),
+      FavoritePage(favoritedPlants: favorites),
       ProfilePage(),
     ];
   }
