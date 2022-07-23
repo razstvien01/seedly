@@ -121,6 +121,7 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                   itemCount: _plantList.length,
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {

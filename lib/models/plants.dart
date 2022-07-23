@@ -38,7 +38,7 @@ class Plant {
         humidity: 34,
         temperature: '23 - 34',
         imageURL: 'assets/images/plant-one.png',
-        isFavorated: true,
+        isFavorated: false,
         decription:
         'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
             'even the harshest weather condition.',
@@ -98,7 +98,7 @@ class Plant {
         humidity: 66,
         temperature: '12 - 16',
         imageURL: 'assets/images/plant-four.png',
-        isFavorated: true,
+        isFavorated: false,
         decription:
         'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
             'even the harshest weather condition.',

@@ -3,6 +3,8 @@ import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/ud_widgets/plant_widget.dart';
 
+int total_price = 0;
+
 class CartPage extends StatefulWidget {
   final List<Plant> addedToCartPlants;
   const CartPage({Key? key, required this.addedToCartPlants}) : super(key: key);
@@ -12,6 +14,8 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -67,7 +71,7 @@ class _CartPageState extends State<CartPage> {
                       fontWeight: FontWeight.w300,
                     ),
                     ),
-                      Text(r'$65', style: TextStyle(
+                      Text('\$$total_price', style: TextStyle(
                         fontSize: 24.0,
                         color: Constants.primaryColor,
                         fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
+import 'package:seedly/pages/mainMenuPages/cart_page.dart';
 
 class DetailPage extends StatefulWidget {
   final int plantId;
@@ -227,7 +228,11 @@ class _DetailPageState extends State<DetailPage> {
               child: IconButton(onPressed: (){
                 setState(() {
                   bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
-
+                  
+                  print(isSelected);
+                  
+                  total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
+                  
                   _plantList[widget.plantId].isSelected = isSelected;
                 });
               }, icon: Icon(
