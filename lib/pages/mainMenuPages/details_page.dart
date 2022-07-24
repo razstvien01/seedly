@@ -36,51 +36,10 @@ class _DetailPageState extends State<DetailPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Constants.primaryColor.withOpacity(.15),
-                    ),
-                    child: Icon(
-                      Icons.close,
-                      color: Constants.primaryColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    debugPrint('favorite');
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Constants.primaryColor.withOpacity(.15),
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            bool isFavorited = toggleIsFavorated(
-                                _plantList[widget.plantId].isFavorated);
-                            _plantList[widget.plantId].isFavorated =
-                                isFavorited;
-                          });
-                        },
-                        icon: Icon(
-                          _plantList[widget.plantId].isFavorated == true
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: Constants.primaryColor,
-                        )),
-                  ),
-                ),
+                
+                CloseButton(context),
+                
+                FavButton(_plantList),
               ],
             ),
           ),
@@ -133,88 +92,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.only(top: 80, left: 30, right: 30),
-              height: size.height * .5,
-              width: size.width,
-              decoration: BoxDecoration(
-                color: Constants.primaryColor.withOpacity(.4),
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(30),
-                  topLeft: Radius.circular(30),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            _plantList[widget.plantId].plantName,
-                            style: TextStyle(
-                              color: Constants.primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30.0,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            r'$' + _plantList[widget.plantId].price.toString(),
-                            style: TextStyle(
-                              color: Constants.blackColor,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            _plantList[widget.plantId].rating.toString(),
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              color: Constants.primaryColor,
-                            ),
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 30.0,
-                            color: Constants.primaryColor,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Expanded(
-                    child: Text(
-                      _plantList[widget.plantId].decription,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        height: 1.5,
-                        fontSize: 18,
-                        color: Constants.blackColor.withOpacity(.7),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          plantDetails(size, _plantList),
         ],
       ),
       floatingActionButton: SizedBox(
@@ -222,64 +100,212 @@ class _DetailPageState extends State<DetailPage> {
         height: 50,
         child: Row(
           children: [
-            Container(
-              height: 50,
-              width: 50,
-              child: IconButton(onPressed: (){
-                setState(() {
-                  bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
-                  
-                  print(isSelected);
-                  
-                  total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
-                  
-                  _plantList[widget.plantId].isSelected = isSelected;
-                });
-              }, icon: Icon(
-                Icons.shopping_cart,
-                color: _plantList[widget.plantId].isSelected == true ? Colors.white : Constants.primaryColor,
-              )),
-              decoration: BoxDecoration(
-                  color: _plantList[widget.plantId].isSelected == true ? Constants.primaryColor.withOpacity(.5) : Colors.white,
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, 1),
-                      blurRadius: 5,
-                      color: Constants.primaryColor.withOpacity(.3),
-                    ),
-                  ]),
-            ),
+            cartFAButton(_plantList),
             const SizedBox(
               width: 20,
             ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Constants.primaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0, 1),
-                        blurRadius: 5,
-                        color: Constants.primaryColor.withOpacity(.3),
-                      )
-                    ]),
-                child: const Center(
-                  child: Text(
-                    'BUY NOW',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            
+            buyNowButton(),
           ],
         ),
       ),
     );
+  }
+
+  Expanded buyNowButton() {
+    return Expanded(
+      child: TextButton(
+        onPressed: (){},
+        child: Container(
+          decoration: BoxDecoration(
+          color: Constants.primaryColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(0, 1),
+              blurRadius: 5,
+              color: Constants.primaryColor.withOpacity(.3),
+            )
+          ]),
+          child: Center(
+            child: Text(
+              'BUY NOW',
+              style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+      ),
+          );
+  }
+
+  Container cartFAButton(List<Plant> _plantList) {
+    return Container(
+            height: 50,
+            width: 50,
+            child: IconButton(onPressed: (){
+              setState(() {
+                bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
+                
+                print(isSelected);
+                
+                total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
+                
+                _plantList[widget.plantId].isSelected = isSelected;
+              });
+            }, icon: Icon(
+              Icons.shopping_cart,
+              color: _plantList[widget.plantId].isSelected == true ? Colors.white : Constants.primaryColor,
+            )),
+            decoration: BoxDecoration(
+                color: _plantList[widget.plantId].isSelected == true ? Constants.primaryColor.withOpacity(.5) : Colors.white,
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 1),
+                    blurRadius: 5,
+                    color: Constants.primaryColor.withOpacity(.3),
+                  ),
+                ]),
+          );
+  }
+
+  Positioned plantDetails(Size size, List<Plant> _plantList) {
+    return Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            padding: const EdgeInsets.only(top: 80, left: 30, right: 30),
+            height: size.height * .5,
+            width: size.width,
+            decoration: BoxDecoration(
+              color: Constants.primaryColor.withOpacity(.4),
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(30),
+                topLeft: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _plantList[widget.plantId].plantName,
+                          style: TextStyle(
+                            color: Constants.primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30.0,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          r'$' + _plantList[widget.plantId].price.toString(),
+                          style: TextStyle(
+                            color: Constants.blackColor,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          _plantList[widget.plantId].rating.toString(),
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            color: Constants.primaryColor,
+                          ),
+                        ),
+                        Icon(
+                          Icons.star,
+                          size: 30.0,
+                          color: Constants.primaryColor,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Expanded(
+                  child: Text(
+                    _plantList[widget.plantId].decription,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      height: 1.5,
+                      fontSize: 18,
+                      color: Constants.blackColor.withOpacity(.7),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+  }
+
+  GestureDetector CloseButton(BuildContext context) {
+    return GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Constants.primaryColor.withOpacity(.15),
+                  ),
+                  child: Icon(
+                    Icons.close,
+                    color: Constants.primaryColor,
+                  ),
+                ),
+              );
+  }
+
+  GestureDetector FavButton(List<Plant> _plantList) {
+    return GestureDetector(
+      onTap: () {
+        debugPrint('favorite');
+      },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Constants.primaryColor.withOpacity(.15),
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          bool isFavorited = toggleIsFavorated(
+                              _plantList[widget.plantId].isFavorated);
+                          _plantList[widget.plantId].isFavorated =
+                              isFavorited;
+                        });
+                      },
+                      icon: Icon(
+                        _plantList[widget.plantId].isFavorated == true
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: Constants.primaryColor,
+                      )),
+                ),
+              );
   }
 }
 

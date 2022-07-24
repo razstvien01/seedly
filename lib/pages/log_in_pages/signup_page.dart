@@ -69,7 +69,7 @@ class _SignupPageState extends State<SignupPage> {
                   TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.next),
                   SizedBox(height: 30,),
                   
-                  RoundedGreenButton(onColor: true, routeKey: '/onboard', text: 'Sign Up', onPressed: signUp),
+                  createAccount(),
                 ],
               ),
             )
@@ -78,4 +78,6 @@ class _SignupPageState extends State<SignupPage> {
       ),
     );
   }
+
+  RoundedGreenButton createAccount() => RoundedGreenButton(onColor: true, routeKey: '/onboard', text: 'Sign Up', onPressed: signUp);
 }

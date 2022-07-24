@@ -46,10 +46,6 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    
-    //* Navigator.of(context) not working!
-    // navigatorKey.currentState!.popUntil((route) => route.isFirst);
-    // Navigator.pushNamed(context, '/onboard/login');
   }
   
   @override

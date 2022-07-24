@@ -14,25 +14,33 @@ class OnboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // return onboardUI();
     return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator(),);
-          }
-          else if(snapshot.hasError){
-            print('hmmmmm');
-            return Center(child: Text('Something went wrong!'));
-          }
-          else if(snapshot.hasData){
-            return NavBar();
-          }
-          else{
-            print('no data');
-            return onboardUI();
-          }
-        },
-      )
+      body: authIfLoginOrNot()
+    );
+  }
+  
+  RoundedGreenButton clickSignup() => RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, onPressed: (){},);
+
+  RoundedGreenButton clickSignin() => RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, onPressed: (){});
+
+  StreamBuilder<User?> authIfLoginOrNot() {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot){
+        if(snapshot.connectionState == ConnectionState.waiting){
+          return Center(child: CircularProgressIndicator(),);
+        }
+        else if(snapshot.hasError){
+          print('hmmmmm');
+          return Center(child: Text('Something went wrong!'));
+        }
+        else if(snapshot.hasData){
+          return NavBar();
+        }
+        else{
+          print('no data');
+          return onboardUI();
+        }
+      },
     );
   }
 
@@ -82,12 +90,12 @@ class OnboardPage extends StatelessWidget {
           const SizedBox(height: 50,),
           
           //* Login/Sign button
-          RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, onPressed: (){}),
+          clickSignin(),
           
           const HDividerText(),
           
           //* Sign up button
-          RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, onPressed: (){},),
+          clickSignup(),
           
           const SizedBox(height: 50,),
           
