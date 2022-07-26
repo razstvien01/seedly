@@ -1,7 +1,9 @@
 //* This .dart file is used for designing Sign up page UI
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:seedly/models/user.dart';
 
 //* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
@@ -15,8 +17,10 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-
+  final TextEditingController contactController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -36,7 +40,9 @@ class _SignupPageState extends State<SignupPage> {
     
     try{
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
-      print('account created');
+      
+      createUser();
+      
       Navigator.of(context)
     .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
       return;
@@ -44,6 +50,21 @@ class _SignupPageState extends State<SignupPage> {
       print(e);
     }
     
+  }
+  
+  Future createUser() async{
+    final user = UserDetails(
+        name: nameController.text,
+        address: addressController.text,
+        email: emailController.text,
+        contact_number: int.parse(contactController.text)
+      );
+    
+    final docUser = FirebaseFirestore.instance.collection('users').doc(user.email);
+    
+    final json = user.toJson();
+    
+    await docUser.set(json);
   }
 
   @override
@@ -64,8 +85,18 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 children: [
                   SizedBox(height: 30,),
+                  TextFieldContainer(hintText: 'Name', textEditingController: nameController, textInputAction: TextInputAction.next),
+                  SizedBox(height: 30,),
+                  
+                  TextFieldContainer(hintText: 'Address', textEditingController: addressController, textInputAction: TextInputAction.next),
+                  SizedBox(height: 30,),
+                  
+                  TextFieldContainer(hintText: 'Contact Number', textEditingController: contactController, textInputAction: TextInputAction.next),
+                  SizedBox(height: 30,),
+                  
                   TextFieldContainer(hintText: 'Email', textEditingController: emailController, textInputAction: TextInputAction.next),
                   SizedBox(height: 30,),
+                  
                   TextFieldContainer(hintText: 'Password', textEditingController: passwordController, textInputAction: TextInputAction.next),
                   SizedBox(height: 30,),
                   

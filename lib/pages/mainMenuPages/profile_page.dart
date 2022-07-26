@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+    print('${user?.uid} - id');
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
