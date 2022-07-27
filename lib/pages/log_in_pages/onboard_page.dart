@@ -1,8 +1,10 @@
 //* This .dart file is used for designing Onboarding page UI
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:seedly/ud_widgets/nav_bar.dart';
+import 'package:seedly/models/plants.dart';
 
 //* User defined widgets
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
@@ -21,7 +23,62 @@ class OnboardPage extends StatelessWidget {
   RoundedGreenButton clickSignup() => RoundedGreenButton(text: 'Sign up', routeKey: '/onboard/signup', onColor: true, onPressed: (){},);
 
   RoundedGreenButton clickSignin() => RoundedGreenButton(text: 'Sign in', routeKey: '/onboard/login', onColor: true, onPressed: (){});
-
+  
+  FutureBuilder<DocumentSnapshot?> dataLoad() {
+    final user = FirebaseAuth.instance.currentUser;
+    final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+    
+    return FutureBuilder<DocumentSnapshot?>(
+      future: docUser.get(),
+      builder: (context, snapshot) {
+        if(snapshot.hasData){
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          
+          // print(data.);
+          // for(Map values in data.values){
+            
+          // }
+          
+  //         for (var k in numMap.keys) {
+  //   print("Key : $k, value : ${numMap[k]}");
+  // }    
+          // for(var k in data.keys){
+          //   // print('Key: $k, value: ${data[k]}');
+          //   if(k == 'favorite_plants'){
+              
+          //     for(Map v in data.values){
+          //       print(v);
+          //     }
+              
+          //   }
+          // }
+          // var list = [];
+          
+          // list.add(data);
+          
+          // // print(list[0]['favorite_plants']);
+          // for(List l in list){
+          //   print(l['favorite_plants']);
+          // }
+          
+          data.forEach((key, value) {
+            if(key == 'favorite_plants'){
+              Map v = data[key];
+              v.forEach((k, v) {
+                // print('key: ${k}, value: ${v}');
+                Plant.plantList[int.parse(k)].isFavorated = v;
+              });
+            }
+          });         
+          return NavBar();
+        }
+        else{
+          return Center(child: CircularProgressIndicator(),);
+        }
+      },
+    );
+  }
+  
   StreamBuilder<User?> authIfLoginOrNot() {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
@@ -34,7 +91,8 @@ class OnboardPage extends StatelessWidget {
           return Center(child: Text('Something went wrong!'));
         }
         else if(snapshot.hasData){
-          return NavBar();
+          print('AUTO SIGN IN');
+          return dataLoad();
         }
         else{
           print('no data');

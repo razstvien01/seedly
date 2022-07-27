@@ -1,5 +1,7 @@
 //* This .dart file is used for designing customize Navigation bar widget for connecting 4 major pages
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 //* User defined widgets
@@ -55,84 +57,88 @@ class _NavBarState extends State<NavBar> {
     'Favorite',
     'Profile',
   ];
-
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(titleList[_bottomNavIndex], style: TextStyle(
-              color: Constants.blackColor,
-              fontWeight: FontWeight.w500,
-              fontSize: 24,
-            ),),
-            Icon(Icons.notifications, color: Constants.blackColor, size: 30.0,)
-          ],
-        ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0.0,
-      ),
-      body: IndexedStack(
-        index: _bottomNavIndex,
-        children: _widgetOptions(),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: (){
-      //     Navigator.push(context, PageTransition(child: const ScanPage(), type: PageTransitionType.bottomToTop));
-      //   },
-      //   child: Image.asset('assets/images/code-scan-two.png', height: 30.0,),
-      //   backgroundColor: Constants.primaryColor,
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // bottomNavigationBar: AnimatedBottomNavigationBar(
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   splashColor: Constants.primaryColor,
-      //   activeColor: Constants.primaryColor,
-      //   inactiveColor: Colors.black.withOpacity(.5),
-      //   icons: iconList,
-      //   activeIndex: _bottomNavIndex,
-      //   gapLocation: GapLocation.none,
-        
-      //   // gapLocation: GapLocation.center,
-      //   notchSmoothness: NotchSmoothness.softEdge,
-      //   onTap: (index){
-          // setState(() {
-          //   _bottomNavIndex = index;
-          //   final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
-          //   final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
+    return navbar_ui(context);
+  }
 
-          //   favorites = favoritedPlants;
-          //   myCart = addedToCartPlants.toSet().toList();
-          // });
-      //   }
-      // ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(color: Colors.white),
+  Scaffold navbar_ui(BuildContext context) {
+    return Scaffold(
+        extendBody: true,
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(titleList[_bottomNavIndex], style: TextStyle(
+                color: Constants.blackColor,
+                fontWeight: FontWeight.w500,
+                fontSize: 24,
+              ),),
+              Icon(Icons.notifications, color: Constants.blackColor, size: 30.0,)
+            ],
+          ),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          elevation: 0.0,
         ),
-        child: CurvedNavigationBar(
-          color: Constants.primaryColor,
-          backgroundColor: Colors.transparent,
-          items: items,
+        body: IndexedStack(
           index: _bottomNavIndex,
-          height: 60,
-          buttonBackgroundColor: Colors.green[300],
-          
-          onTap: (index){
-            setState(() {
-              _bottomNavIndex = index;
-              final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
-              final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
-      
-              favorites = favoritedPlants;
-              myCart = addedToCartPlants.toSet().toList();
-            });
-          },
+          children: _widgetOptions(),
         ),
-      ),
-    );
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: (){
+        //     Navigator.push(context, PageTransition(child: const ScanPage(), type: PageTransitionType.bottomToTop));
+        //   },
+        //   child: Image.asset('assets/images/code-scan-two.png', height: 30.0,),
+        //   backgroundColor: Constants.primaryColor,
+        // ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // bottomNavigationBar: AnimatedBottomNavigationBar(
+        // bottomNavigationBar: CurvedNavigationBar(
+        //   splashColor: Constants.primaryColor,
+        //   activeColor: Constants.primaryColor,
+        //   inactiveColor: Colors.black.withOpacity(.5),
+        //   icons: iconList,
+        //   activeIndex: _bottomNavIndex,
+        //   gapLocation: GapLocation.none,
+          
+        //   // gapLocation: GapLocation.center,
+        //   notchSmoothness: NotchSmoothness.softEdge,
+        //   onTap: (index){
+            // setState(() {
+            //   _bottomNavIndex = index;
+            //   final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
+            //   final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
+  
+            //   favorites = favoritedPlants;
+            //   myCart = addedToCartPlants.toSet().toList();
+            // });
+        //   }
+        // ),
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            iconTheme: IconThemeData(color: Colors.white),
+          ),
+          child: CurvedNavigationBar(
+            color: Constants.primaryColor,
+            backgroundColor: Colors.transparent,
+            items: items,
+            index: _bottomNavIndex,
+            height: 60,
+            buttonBackgroundColor: Colors.green[300],
+            
+            onTap: (index){
+              setState(() {
+                _bottomNavIndex = index;
+                final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
+                final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
+        
+                favorites = favoritedPlants;
+                myCart = addedToCartPlants.toSet().toList();
+              });
+            },
+          ),
+        ),
+      );
   }
 }
