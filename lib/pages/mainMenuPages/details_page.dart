@@ -148,6 +148,9 @@ class _DetailPageState extends State<DetailPage> {
             height: 50,
             width: 50,
             child: IconButton(onPressed: (){
+              final user = FirebaseAuth.instance.currentUser;
+              final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+              
               setState(() {
                 bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
                 
@@ -157,6 +160,11 @@ class _DetailPageState extends State<DetailPage> {
                 
                 _plantList[widget.plantId].isSelected = isSelected;
               });
+              
+              docUser.update({
+                'cart_plants.${widget.plantId}': _plantList[widget.plantId].isFavorated
+              });
+              
             }, icon: Icon(
               Icons.shopping_cart,
               color: _plantList[widget.plantId].isSelected == true ? Colors.white : Constants.primaryColor,

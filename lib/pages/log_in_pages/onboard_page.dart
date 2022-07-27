@@ -69,7 +69,17 @@ class OnboardPage extends StatelessWidget {
                 Plant.plantList[int.parse(k)].isFavorated = v;
               });
             }
-          });         
+          });
+          
+          data.forEach((key, value) {
+            if(key == 'cart_plants'){
+              Map v = data[key];
+              v.forEach((k, v) {
+                // print('key: ${k}, value: ${v}');
+                Plant.plantList[int.parse(k)].isSelected = v;
+              });
+            }
+          });
           return NavBar();
         }
         else{

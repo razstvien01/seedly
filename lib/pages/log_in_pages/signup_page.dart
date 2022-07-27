@@ -68,12 +68,6 @@ class _SignupPageState extends State<SignupPage> {
     final json = user.toJson();
     
     await docUser.set(json);
-    // await docUser.update({
-    //     'map1': {
-    //     'key1': 'value1',
-    //     'key2': 'value2',
-    //     }
-    // });
     
     Map<String, Map<String, dynamic>> plantFav = {
       'favorite_plants': {}
