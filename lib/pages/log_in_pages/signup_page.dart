@@ -53,6 +53,8 @@ class _SignupPageState extends State<SignupPage> {
   }
   
   Future createUser() async{
+    final currentUser = FirebaseAuth.instance.currentUser;
+    
     final user = UserDetails(
         name: nameController.text,
         address: addressController.text,
@@ -60,7 +62,7 @@ class _SignupPageState extends State<SignupPage> {
         contact_number: int.parse(contactController.text)
       );
     
-    final docUser = FirebaseFirestore.instance.collection('users').doc(user.email);
+    final docUser = FirebaseFirestore.instance.collection('users').doc(currentUser?.uid);
     
     final json = user.toJson();
     

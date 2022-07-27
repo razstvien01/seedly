@@ -15,6 +15,13 @@ class UserDetails{
     'name': name,
     'email': email,
     'address': address,
-    'cotact_number': contact_number,
+    'contact_number': contact_number,
   };
+  
+  static UserDetails fromJson(Map<String, dynamic> json) =>  UserDetails(
+    name: json['name'],
+    email: json['email'],
+    address: json['address'],
+    contact_number: json['contact_number'],
+  );
 }

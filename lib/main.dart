@@ -15,8 +15,6 @@ import 'package:seedly/pages/mainMenuPages/home.dart';
 //* Navigation bar widget
 import 'package:seedly/ud_widgets/nav_bar.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 //* navigator key
 final navigatorKey = GlobalKey<NavigatorState>();
 
