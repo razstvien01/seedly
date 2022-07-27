@@ -3,7 +3,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:seedly/models/user.dart';
+import 'package:seedly/models/plants.dart';
+// import 'package:seedly/models/user.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 
 import 'package:seedly/constants.dart';
@@ -24,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+    // print(Plant.plantList[0].isFavorated);
     
     // return ProfileUI(size);
     return Scaffold(
@@ -33,6 +34,10 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, snapshot) {
           if(snapshot.hasData){
             Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+            
+            // print(data['favorites']);
+            // print(data['favorites'][0]);
+            
             
             return ProfileUI(size, data);
             
