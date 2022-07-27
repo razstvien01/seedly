@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
@@ -281,8 +283,9 @@ class _DetailPageState extends State<DetailPage> {
     return GestureDetector(
       onTap: () {
         debugPrint('favorite');
+        
       },
-                child: Container(
+      child: Container(
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(
@@ -291,11 +294,18 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                   child: IconButton(
                       onPressed: () {
+                        final user = FirebaseAuth.instance.currentUser;
+                        final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+                        
                         setState(() {
                           bool isFavorited = toggleIsFavorated(
                               _plantList[widget.plantId].isFavorated);
                           _plantList[widget.plantId].isFavorated =
                               isFavorited;
+                        });
+                        
+                        docUser.update({
+                          'favorite_plants.${widget.plantId}': _plantList[widget.plantId].isFavorated
                         });
                       },
                       icon: Icon(

@@ -1,5 +1,7 @@
 //* This .dart file is used for designing Home page UI in main menu folder
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:seedly/constants.dart';
@@ -114,11 +116,18 @@ class _HomeState extends State<Home> {
                                 width: 50,
                                 child: IconButton(
                                   onPressed: () {
+                                    final user = FirebaseAuth.instance.currentUser;
+                                    final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+                                    
                                     setState(() {
                                       bool isFavorited = toggleIsFavorated(
                                           _plantList[index].isFavorated);
                                       _plantList[index].isFavorated = isFavorited;
                                     });
+                                    
+                                    docUser.update({
+                                      'favorite_plants.${index}': _plantList[index].isFavorated
+                                      });
                                   },
                                   icon: Icon(
                                     _plantList[index].isFavorated == true

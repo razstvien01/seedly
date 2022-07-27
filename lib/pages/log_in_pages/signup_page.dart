@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:seedly/models/plants.dart';
 import 'package:seedly/models/user.dart';
 
 //* User defined widgets
@@ -67,6 +68,35 @@ class _SignupPageState extends State<SignupPage> {
     final json = user.toJson();
     
     await docUser.set(json);
+    // await docUser.update({
+    //     'map1': {
+    //     'key1': 'value1',
+    //     'key2': 'value2',
+    //     }
+    // });
+    
+    Map<String, Map<String, dynamic>> plantFav = {
+      'favorite_plants': {}
+    };
+    
+    for(int i = 0; i < Plant.plantList.length; ++i){
+      for(Map value in plantFav.values){
+        value['$i'] = Plant.plantList[i].isFavorated;
+      }
+    }
+    
+    Map<String, Map<String, dynamic>> plantCart = {
+      'cart_plants': {}
+    };
+    
+    for(int i = 0; i < Plant.plantList.length; ++i){
+      for(Map value in plantCart.values){
+        value['$i'] = Plant.plantList[i].isSelected;
+      }
+    }
+    
+    await docUser.update(plantFav);
+    await docUser.update(plantCart);
   }
 
   @override
