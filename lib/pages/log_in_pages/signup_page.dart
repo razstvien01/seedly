@@ -45,7 +45,7 @@ class _SignupPageState extends State<SignupPage> {
       createUser();
       
       Navigator.of(context)
-    .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+    .pushNamedAndRemoveUntil('/navbar', (Route<dynamic> route) => false);
       return;
     } on FirebaseAuthException catch(e){
       print(e);

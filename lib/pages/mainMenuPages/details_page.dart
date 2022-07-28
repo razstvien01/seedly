@@ -162,8 +162,10 @@ class _DetailPageState extends State<DetailPage> {
               });
               
               docUser.update({
-                'cart_plants.${widget.plantId}': _plantList[widget.plantId].isFavorated
+                'cart_plants.${widget.plantId}': _plantList[widget.plantId].isSelected,
+                'total_price': total_price,
               });
+              
               
             }, icon: Icon(
               Icons.shopping_cart,
