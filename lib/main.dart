@@ -1,4 +1,5 @@
 //* Firebase database
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ import 'package:seedly/pages/loading_page.dart';
 import 'package:seedly/pages/log_in_pages/onboard_page.dart';
 import 'package:seedly/pages/log_in_pages/login_page.dart';
 import 'package:seedly/pages/log_in_pages/signup_page.dart';
+import 'package:seedly/pages/mainMenuPages/buysuccess.dart';
 import 'package:seedly/pages/mainMenuPages/home.dart';
 
 //* Navigation bar widget
@@ -41,6 +43,8 @@ void main() async {
       '/navbar': (context) => NavBar(), //* Navigation bar widget that connects 4 different pages
       
       '/home': (context) => Home(),
+      
+      '/success': (context) => Success(),
     },
     
     //* Theme data

@@ -5,6 +5,7 @@ import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/cart_page.dart';
 
+int currentIdPlant = 0;
 class DetailPage extends StatefulWidget {
   final int plantId;
   const DetailPage({Key? key, required this.plantId}) : super(key: key);
@@ -117,7 +118,11 @@ class _DetailPageState extends State<DetailPage> {
   Expanded buyNowButton() {
     return Expanded(
       child: TextButton(
-        onPressed: (){},
+        onPressed: (){
+          currentIdPlant = widget.plantId;
+          
+          Navigator.pushNamed(context, '/success');
+        },
         child: Container(
           decoration: BoxDecoration(
           color: Constants.primaryColor,

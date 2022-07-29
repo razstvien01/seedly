@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:seedly/pages/mainMenuPages/cart_page.dart';
 import 'package:seedly/ud_widgets/nav_bar.dart';
 import 'package:seedly/models/plants.dart';
 
@@ -80,6 +81,8 @@ class OnboardPage extends StatelessWidget {
               });
             }
           });
+          
+          total_price = data['total_price'];
           return NavBar();
         }
         else{
