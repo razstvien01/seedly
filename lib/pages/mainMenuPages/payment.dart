@@ -108,7 +108,21 @@ class _PaymentState extends State<Payment> {
                   total_orders += 1;
                   
                   docUser.update({
-                    'plant_orders.${total_orders}': currentIdPlant
+                    'orders.${currentIdPlant}': {
+                        'plant_name': Plant.plantList[currentIdPlant].plantName,
+                        'plant_price': Plant.plantList[currentIdPlant].price,
+                        'date_ordered': DateTime.now(),
+                        'date_delivered': DateTime.now(),
+                      
+                      // 'Time ordered': {DateTime.now()},
+                      
+                    }
+                    
+                    // 'plant_orders.${total_orders}': {
+                    //   currentIdPlant,
+                    //   'Time ordered': DateTime.now(),
+                      
+                    // }
                   });
                   
                   

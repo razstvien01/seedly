@@ -95,7 +95,11 @@ class _SignupPageState extends State<SignupPage> {
     await docUser.update(plantCart);
     
     Map<String, Map<String, dynamic>> plantOrders = {
-      'plant_orders': {}
+      'orders': {
+        // 'details':{
+          
+        // },
+      },
     };
     
     await docUser.update({
@@ -103,10 +107,6 @@ class _SignupPageState extends State<SignupPage> {
     },);
     
     await docUser.update(plantOrders);
-    
-    // Map<String, Map<String, dynamic>> plantOrders = {
-    //   'orders': {}
-    // };
     
   }
 
