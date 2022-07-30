@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:seedly/constants.dart';
 
 class ProfileWidget extends StatelessWidget {
+  final VoidCallback onPressed;
   final IconData icon;
   final String title;
-  const ProfileWidget({
+  ProfileWidget(
+    {
     Key? key,
+    required this.onPressed,
     required this.icon,
     required this.title,
   }) : super(key: key);
@@ -16,7 +19,7 @@ class ProfileWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextButton(
-        onPressed: (){},
+        onPressed: this.onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -10,6 +10,7 @@ import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/ud_widgets/profile_widget.dart';
 
+int total_orders = 0;
 
 class ProfilePage extends StatefulWidget {
 
@@ -128,18 +129,30 @@ class _ProfilePageState extends State<ProfilePage> {
               ProfileWidget(
                 icon: Icons.person,
                 title: 'My Purchases',
+                onPressed: () => Navigator.pushNamed(context, '/purchases'),
+                  // Navigator.of(context).pushNamed('/purchases');,
+                
               ),
               ProfileWidget(
                 icon: Icons.settings,
                 title: 'Settings',
+                onPressed: () {
+                  
+                },
               ),
               ProfileWidget(
                 icon: Icons.chat,
                 title: 'FAQs',
+                onPressed: () {
+                  
+                },
               ),
               ProfileWidget(
                 icon: Icons.share,
                 title: 'Share',
+                onPressed: () {
+                  
+                },
               ),
               
               RoundedGreenButton(

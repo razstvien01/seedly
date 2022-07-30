@@ -121,7 +121,8 @@ class _DetailPageState extends State<DetailPage> {
         onPressed: (){
           currentIdPlant = widget.plantId;
           
-          Navigator.pushNamed(context, '/success');
+          // Navigator.pushNamed(context, '/success');
+          Navigator.pushNamed(context, '/payment');
         },
         child: Container(
           decoration: BoxDecoration(

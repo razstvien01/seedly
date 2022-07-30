@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/models/user.dart';
+import 'package:seedly/pages/mainMenuPages/profile_page.dart';
 
 //* User defined widgets
 import 'package:seedly/ud_widgets/textfieldcontainer.dart';
@@ -87,10 +88,26 @@ class _SignupPageState extends State<SignupPage> {
       for(Map value in plantCart.values){
         value['$i'] = Plant.plantList[i].isSelected;
       }
+      
     }
     
     await docUser.update(plantFav);
     await docUser.update(plantCart);
+    
+    Map<String, Map<String, dynamic>> plantOrders = {
+      'plant_orders': {}
+    };
+    
+    await docUser.update({
+      'no_of_orders': total_orders,
+    },);
+    
+    await docUser.update(plantOrders);
+    
+    // Map<String, Map<String, dynamic>> plantOrders = {
+    //   'orders': {}
+    // };
+    
   }
 
   @override
