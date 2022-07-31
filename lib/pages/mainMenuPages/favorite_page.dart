@@ -50,7 +50,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     return PlantWidget(
-                        index: index, plantList: widget.favoritedPlants);
+                        index: index, plantList: widget.favoritedPlants, isOrder: false,);
                   }),
             ),
     );

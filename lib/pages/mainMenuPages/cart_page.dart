@@ -56,7 +56,9 @@ class _CartPageState extends State<CartPage> {
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     return PlantWidget(
-                        index: index, plantList: widget.addedToCartPlants);
+                        index: index, plantList: widget.addedToCartPlants, isOrder: false,
+                        
+                    );
                   }),
             ),
             Column(

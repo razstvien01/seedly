@@ -95,18 +95,25 @@ class _SignupPageState extends State<SignupPage> {
     await docUser.update(plantCart);
     
     Map<String, Map<String, dynamic>> plantOrders = {
-      'orders': {
-        // 'details':{
+      // 'orders': {
+      //   // 'details':{
           
-        // },
-      },
+      //   // },
+      // },
     };
     
+    
+    total_orders = 0;
     await docUser.update({
       'no_of_orders': total_orders,
     },);
     
-    await docUser.update(plantOrders);
+    Plant.plantOrders = plantOrders;
+    
+    await docUser.update({
+      'orders': plantOrders
+      }
+    );
     
   }
 

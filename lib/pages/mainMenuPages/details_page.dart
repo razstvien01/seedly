@@ -151,23 +151,24 @@ class _DetailPageState extends State<DetailPage> {
 
   Container cartFAButton(List<Plant> _plantList) {
     return Container(
-            height: 50,
-            width: 50,
-            child: IconButton(onPressed: (){
-              final user = FirebaseAuth.instance.currentUser;
-              final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+      height: 50,
+      width: 50,
+      child: IconButton(onPressed: (){
+        
+        final user = FirebaseAuth.instance.currentUser;
+        final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
               
-              setState(() {
-                bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
-                
-                print(isSelected);
-                
-                total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
-                
-                _plantList[widget.plantId].isSelected = isSelected;
-              });
+        setState(() {
+          bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
+          
+          print(isSelected);
+          
+          total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
+          
+          _plantList[widget.plantId].isSelected = isSelected;
+        });
               
-              docUser.update({
+          docUser.update({
                 'cart_plants.${widget.plantId}': _plantList[widget.plantId].isSelected,
                 'total_price': total_price,
               });

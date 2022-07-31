@@ -164,7 +164,15 @@ class Plant {
             'even the harshest weather condition.',
         isSelected: false),
   ];
-
+  
+  static Map<String, Map<String, dynamic>> plantOrders = {
+  };
+  
+  // static List<dynamic> getPlantOrders(){
+    
+    
+  // }
+  
   //Get the favorated items
   static List<Plant> getFavoritedPlants(){
     List<Plant> _travelList = Plant.plantList;

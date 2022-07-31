@@ -224,7 +224,7 @@ class _HomeState extends State<Home> {
                         onTap: (){
                           Navigator.push(context, PageTransition(child: DetailPage(plantId: _plantList[index].plantId), type: PageTransitionType.bottomToTop));
                         },
-                        child: PlantWidget(index: index, plantList: _plantList));
+                        child: PlantWidget(index: index, plantList: _plantList, isOrder: false,));
                   }),
             ),
           ],

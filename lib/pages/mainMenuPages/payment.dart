@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/buysuccess.dart';
@@ -107,12 +108,23 @@ class _PaymentState extends State<Payment> {
                   
                   total_orders += 1;
                   
+                  // DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+                  // String string = dateFormat.format(DateTime.now());
+                  
+                  DateTime dtDO= DateTime.now();
+                  DateTime dtDD = DateTime.now().add(new Duration(days: 7));
+                  
+                  String dateOrder = DateFormat('yyyy-MM-dd – kk:mm').format(dtDO);
+                  
+                  String dateDelivered = DateFormat('yyyy-MM-dd – kk:mm').format(dtDD);
+                  
                   docUser.update({
-                    'orders.${currentIdPlant}': {
+                    'orders.${total_orders}': {
                         'plant_name': Plant.plantList[currentIdPlant].plantName,
                         'plant_price': Plant.plantList[currentIdPlant].price,
-                        'date_ordered': DateTime.now(),
-                        'date_delivered': DateTime.now(),
+                        'plant_index': currentIdPlant,
+                        'date_ordered': dateOrder,
+                        'date_delivered': dateDelivered,
                       
                       // 'Time ordered': {DateTime.now()},
                       
