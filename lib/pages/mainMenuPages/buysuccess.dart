@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/cart_page.dart';
 import 'package:seedly/pages/mainMenuPages/details_page.dart';
+import 'package:seedly/ud_widgets/nav_bar.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 
 class Success extends StatefulWidget {
@@ -57,6 +58,7 @@ class _SuccessState extends State<Success> {
                 'total_price': total_price,
               });
                 
+                nav_index = 0;
                 
                 Navigator.of(context)
     .pushNamedAndRemoveUntil('/navbar', (Route<dynamic> route) => false);

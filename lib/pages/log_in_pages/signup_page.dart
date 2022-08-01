@@ -76,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
     
     for(int i = 0; i < Plant.plantList.length; ++i){
       for(Map value in plantFav.values){
-        value['$i'] = Plant.plantList[i].isFavorated;
+        value['$i'] = Plant.plantList[i].isFavorated = false;
       }
     }
     
@@ -86,7 +86,7 @@ class _SignupPageState extends State<SignupPage> {
     
     for(int i = 0; i < Plant.plantList.length; ++i){
       for(Map value in plantCart.values){
-        value['$i'] = Plant.plantList[i].isSelected;
+        value['$i'] = Plant.plantList[i].isSelected = false;
       }
       
     }

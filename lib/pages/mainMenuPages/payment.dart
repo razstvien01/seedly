@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/buysuccess.dart';
 import 'package:seedly/pages/mainMenuPages/details_page.dart';
 import 'package:seedly/pages/mainMenuPages/profile_page.dart';
+import 'package:seedly/ud_widgets/flushnotifbar.dart';
 import 'package:seedly/ud_widgets/rounded_gbutton.dart';
 
 class Payment extends StatefulWidget {
@@ -128,18 +130,48 @@ class _PaymentState extends State<Payment> {
                       
                       // 'Time ordered': {DateTime.now()},
                       
-                    }
-                    
+                    },
+                    'no_of_orders': total_orders
                     // 'plant_orders.${total_orders}': {
                     //   currentIdPlant,
                     //   'Time ordered': DateTime.now(),
                       
                     // }
-                  });
+                  }
+                  );
                   
                   
                   
                   Navigator.pushNamed(context, '/success');
+                }
+                else{
+                  Flushbar(
+      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+      flushbarPosition: FlushbarPosition.BOTTOM,
+      flushbarStyle: FlushbarStyle.FLOATING,
+      reverseAnimationCurve: Curves.decelerate,
+      forwardAnimationCurve: Curves.elasticOut,
+      backgroundColor: Colors.red,
+    boxShadows: [BoxShadow(color: Colors.greenAccent, offset: Offset(0.0, 2.0), blurRadius: 3.0)],
+    backgroundGradient: LinearGradient(colors: [Colors.blueGrey, Colors.black]),
+    isDismissible: true,
+    duration: Duration(seconds: 2),
+    icon: Icon(
+      Icons.warning,
+      color: Colors.redAccent,
+    ),
+    showProgressIndicator: true,
+    progressIndicatorBackgroundColor: Colors.blueGrey,
+    titleText: Text(
+      'Unavailable',
+      style: TextStyle(
+          fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.yellow[600], fontFamily: "ShadowsIntoLightTwo"),
+    ),
+    messageText: Text(
+      'This payment feature is not available yet.',
+      style: TextStyle(fontSize: 18.0, color: Colors.green, fontFamily: "ShadowsIntoLightTwo"),
+    ),
+  ).show(context);
                 }
               },
               ),

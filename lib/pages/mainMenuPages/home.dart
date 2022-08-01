@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/details_page.dart';
+import 'package:seedly/ud_widgets/flushnotifbar.dart';
 import 'package:seedly/ud_widgets/plant_widget.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -123,6 +124,10 @@ class _HomeState extends State<Home> {
                                       bool isFavorited = toggleIsFavorated(
                                           _plantList[index].isFavorated);
                                       _plantList[index].isFavorated = isFavorited;
+                                      
+                                      
+                                      (isFavorited) ?
+              FlushNotifBar.showFlushNotifBar(context, 'Added to Favorites', 'This plant has been added to Favorites.', 2) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Favorites ', 'This plant has been removed from Favorites', 2);
                                     });
                                     
                                     docUser.update({

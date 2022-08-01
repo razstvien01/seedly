@@ -94,7 +94,7 @@ class _PurchasesState extends State<Purchases> {
     body: SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
-        height: size.height,
+        // height: size.height,
         alignment: Alignment.topCenter,
           child: Align(
             alignment: Alignment.topCenter,
@@ -106,7 +106,6 @@ class _PurchasesState extends State<Purchases> {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       
-                      print(widget.data['orders']['${index + 1}']['date_ordered']);
                       
                       return PlantWidget(
                           index: widget.data['orders']['${index + 1}']['plant_index'], 

@@ -118,7 +118,7 @@ class PlantWidget extends StatelessWidget {
         color: Constants.primaryColor.withOpacity(.1),
         borderRadius: BorderRadius.circular(10),
       ),
-      height: 120.0,
+      height: 150.0,
       padding: const EdgeInsets.only(left: 10, top: 10),
       margin: const EdgeInsets.only(bottom: 10, top: 10),
       width: size.width,

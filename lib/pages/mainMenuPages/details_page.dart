@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:seedly/pages/mainMenuPages/cart_page.dart';
+import 'package:seedly/ud_widgets/flushnotifbar.dart';
 
 int currentIdPlant = 0;
 class DetailPage extends StatefulWidget {
@@ -161,7 +162,9 @@ class _DetailPageState extends State<DetailPage> {
         setState(() {
           bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
           
-          print(isSelected);
+          (isSelected) ?
+              FlushNotifBar.showFlushNotifBar(context, 'Added to Cart', 'This plant has been added to Cart.', 1) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Cart ', 'This plant has been removed from Cart', 1);
+            
           
           total_price = (isSelected) ? total_price + _plantList[widget.plantId].price : total_price - _plantList[widget.plantId].price;
           
@@ -172,6 +175,8 @@ class _DetailPageState extends State<DetailPage> {
                 'cart_plants.${widget.plantId}': _plantList[widget.plantId].isSelected,
                 'total_price': total_price,
               });
+              
+              
               
               
             }, icon: Icon(
@@ -298,24 +303,23 @@ class _DetailPageState extends State<DetailPage> {
 
   GestureDetector FavButton(List<Plant> _plantList) {
     return GestureDetector(
-      onTap: () {
-        debugPrint('favorite');
-        
-      },
+      // onTap: () {
+      //   print('sasddsds');
+      // },
       child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: Constants.primaryColor.withOpacity(.15),
-                  ),
-                  child: IconButton(
-                      onPressed: () {
-                        final user = FirebaseAuth.instance.currentUser;
-                        final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
-                        
-                        setState(() {
-                          bool isFavorited = toggleIsFavorated(
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: Constants.primaryColor.withOpacity(.15),
+      ),
+      child: IconButton(
+        onPressed: () {
+          final user = FirebaseAuth.instance.currentUser;
+          final docUser = FirebaseFirestore.instance.collection('users').doc(user?.uid);
+          
+          setState(() {
+            bool isFavorited = toggleIsFavorated(
                               _plantList[widget.plantId].isFavorated);
                           _plantList[widget.plantId].isFavorated =
                               isFavorited;
@@ -324,7 +328,12 @@ class _DetailPageState extends State<DetailPage> {
                         docUser.update({
                           'favorite_plants.${widget.plantId}': _plantList[widget.plantId].isFavorated
                         });
-                      },
+                        
+            (_plantList[widget.plantId].isFavorated) ?
+              FlushNotifBar.showFlushNotifBar(context, 'Added to Favorites', 'This plant has been added to Favorites.', 2) : FlushNotifBar.showFlushNotifBar(context, 'Removed from Favorites ', 'This plant has been removed from Favorites', 2);
+            
+            },
+                      
                       icon: Icon(
                         _plantList[widget.plantId].isFavorated == true
                             ? Icons.favorite

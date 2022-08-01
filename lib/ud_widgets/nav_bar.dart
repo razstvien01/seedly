@@ -14,7 +14,10 @@ import 'package:seedly/constants.dart';
 import 'package:seedly/models/plants.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
+int nav_index = 0;
+
 class NavBar extends StatefulWidget {
+  static int index = 0;
   @override
   State<NavBar> createState() => _NavBarState();
 }
@@ -23,8 +26,18 @@ class _NavBarState extends State<NavBar> {
   List<Plant> favorites = [];
   List<Plant> myCart = [];
 
-  int _bottomNavIndex = 0;
-
+  int bottomNavIndex = NavBar.index;
+  
+  _NavBarState(){
+    final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
+                final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
+        
+                favorites = favoritedPlants;
+                myCart = addedToCartPlants.toSet().toList();
+    // nav_index = bottomNavIndex;
+    bottomNavIndex = nav_index;
+  }
+  
   //List of the pages
   List<Widget> _widgetOptions(){
     return [
@@ -70,7 +83,7 @@ class _NavBarState extends State<NavBar> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(titleList[_bottomNavIndex], style: TextStyle(
+              Text(titleList[bottomNavIndex], style: TextStyle(
                 color: Constants.blackColor,
                 fontWeight: FontWeight.w500,
                 fontSize: 24,
@@ -82,7 +95,7 @@ class _NavBarState extends State<NavBar> {
           elevation: 0.0,
         ),
         body: IndexedStack(
-          index: _bottomNavIndex,
+          index: bottomNavIndex,
           children: _widgetOptions(),
         ),
         // floatingActionButton: FloatingActionButton(
@@ -123,13 +136,13 @@ class _NavBarState extends State<NavBar> {
             color: Constants.primaryColor,
             backgroundColor: Colors.transparent,
             items: items,
-            index: _bottomNavIndex,
+            index: bottomNavIndex,
             height: 60,
             buttonBackgroundColor: Colors.green[300],
             
             onTap: (index){
               setState(() {
-                _bottomNavIndex = index;
+                bottomNavIndex = index;
                 final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
                 final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
         

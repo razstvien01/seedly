@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 //* Firebase database options
 import 'package:seedly/firebase_options.dart';
+import 'package:seedly/models/plants.dart';
 
 //* Sign up and sign in pages
 import 'package:seedly/pages/loading_page.dart';
@@ -13,6 +14,7 @@ import 'package:seedly/pages/log_in_pages/onboard_page.dart';
 import 'package:seedly/pages/log_in_pages/login_page.dart';
 import 'package:seedly/pages/log_in_pages/signup_page.dart';
 import 'package:seedly/pages/mainMenuPages/buysuccess.dart';
+import 'package:seedly/pages/mainMenuPages/favorite_page.dart';
 import 'package:seedly/pages/mainMenuPages/home.dart';
 import 'package:seedly/pages/mainMenuPages/myorders.dart';
 
@@ -47,6 +49,7 @@ void main() async {
       '/navbar': (context) => NavBar(), //* Navigation bar widget that connects 4 different pages
       
       '/home': (context) => Home(),
+      '/fav': (context) => FavoritePage(favoritedPlants: Plant.getFavoritedPlants()), 
       '/payment':(context) => Payment(),
       '/success': (context) => Success(),
       '/purchases': (context) => Purchases(),
